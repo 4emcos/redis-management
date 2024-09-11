@@ -1,6 +1,6 @@
 package com.four.emcos.redis.management.domain;
 
-public record Increment(
+public record RedisEntry(
         String key,
         String value
 ) {

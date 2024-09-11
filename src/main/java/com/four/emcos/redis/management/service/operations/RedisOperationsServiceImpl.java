@@ -1,4 +1,4 @@
-package com.four.emcos.redis.management.service;
+package com.four.emcos.redis.management.service.operations;
 
 import io.quarkus.redis.datasource.ReactiveRedisDataSource;
 import io.quarkus.redis.datasource.RedisDataSource;
@@ -21,7 +21,7 @@ public final class RedisOperationsServiceImpl implements RedisOperationsService 
     }
 
     @Override
-    public String get(String key) {
+    public String findById(String key) {
         return valueCommands.get(key);
     }
 

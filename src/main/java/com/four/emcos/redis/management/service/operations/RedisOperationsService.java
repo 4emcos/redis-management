@@ -1,4 +1,4 @@
-package com.four.emcos.redis.management.service;
+package com.four.emcos.redis.management.service.operations;
 
 import io.smallrye.mutiny.Uni;
 
@@ -6,7 +6,7 @@ import java.util.List;
 
 public sealed interface RedisOperationsService permits RedisOperationsServiceImpl {
 
-    String get(String key);
+    String findById(String key);
 
     void set(String key, String value);
 

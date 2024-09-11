@@ -1,5 +1,6 @@
 package com.four.emcos.redis.management.service;
 
+import com.four.emcos.redis.management.service.operations.RedisOperationsService;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -16,15 +17,11 @@ public final class RedisReadServiceImpl implements RedisReadService {
 
     private static final Logger log = LoggerFactory.getLogger(RedisReadServiceImpl.class);
 
-    // TODO: need to impl
     public String findById(String id) {
-        log.info("Finding by ID: " + id);
-        return id;
+        return redisOperationsService.findById(id);
     }
 
-    // TODO: need to impl
     public Uni<List<String>> findAll() {
-        log.info("Finding all keys");
         return redisOperationsService.keys();
     }
 }
