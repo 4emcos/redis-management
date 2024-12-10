@@ -1,16 +1,23 @@
 package com.four.emcos.redis.management.service.operations;
 
+import com.four.emcos.redis.management.domain.RedisKeyRes;
 import io.smallrye.mutiny.Uni;
 
 import java.util.List;
 
 public sealed interface RedisOperationsService permits RedisOperationsServiceImpl {
 
-    String findById(String key);
+    Uni<String> findById(String key);
 
-    void set(String key, String value);
+    Uni<List<RedisKeyRes>> keys();
+
+    Uni<Void> set(String key, Integer ttl, String value);
 
     Uni<Void> del(String key);
 
-    Uni<List<String>> keys();
+    Uni<Void> delMany(List<String> keys);
+
+    Uni<Void> flush();
+
+    Uni<Void> update(String key, Integer ttl, String value);
 }

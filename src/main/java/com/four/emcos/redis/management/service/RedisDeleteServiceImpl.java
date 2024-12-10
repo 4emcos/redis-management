@@ -4,25 +4,26 @@ import com.four.emcos.redis.management.domain.RedisKeyRes;
 import com.four.emcos.redis.management.service.operations.RedisOperationsService;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import org.slf4j.LoggerFactory;
-import org. slf4j. Logger;
 
 import java.util.List;
 
 @ApplicationScoped
-public final class RedisReadServiceImpl implements RedisReadService {
+public final class RedisDeleteServiceImpl implements RedisDeleteService {
 
     private final RedisOperationsService redisOperationsService;
 
-    public RedisReadServiceImpl(RedisOperationsService redisOperationsService) {
+    public RedisDeleteServiceImpl(RedisOperationsService redisOperationsService) {
         this.redisOperationsService = redisOperationsService;
     }
-    public Uni<String> findById(String id) {
-        return redisOperationsService.findById(id);
+
+    public Uni<Void> delete(String id) {
+        return redisOperationsService.del(id);
     }
 
-    public Uni<List<RedisKeyRes>> findAll() {
-        return redisOperationsService.keys();
+    public Uni<Void> deleteMany(List<String> ids) {
+        return redisOperationsService.delMany(ids);
+    }
+    public Uni<Void> flush() {
+        return redisOperationsService.flush();
     }
 }
